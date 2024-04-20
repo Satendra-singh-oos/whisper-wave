@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 import { signUpSchemaValidation } from "@/schemas/signUpSchema";
 
-dbConnect();
+// dbConnect();
 
 export async function POST(request: NextRequest, response: NextResponse) {
   await dbConnect();
@@ -24,13 +24,11 @@ export async function POST(request: NextRequest, response: NextResponse) {
           code: err.code,
           message: err.message,
         })) || [];
-      return Response.json(
+      return NextResponse.json(
         {
           success: false,
           message:
-            singUpErrors?.length > 0
-              ? singUpErrors
-              : "Invalid query parameters",
+            singUpErrors?.length > 0 ? singUpErrors : "Invalid Data In Form",
         },
         { status: 400 }
       );
@@ -119,7 +117,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
     return NextResponse.json(
       {
         success: true,
-        message: "User Registerd Succesfully ! Kindly VErify Your Email",
+        message: "User Registerd Succesfully ! Kindly Verify Your Email",
       },
       { status: 200 }
     );
