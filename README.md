@@ -1,6 +1,6 @@
 # 🤫 Whisper Wave
 
-# Login And Sinup Flow
+# Login And Singup Flow
 
 - Code whould effectively handles both scenarios of registring a new user and updating an existing but unverified user account
   with a new password and verification code
